@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import { Col, Row } from 'antd';
+import Searchimg from './Components/Searchimg';
+import Images from './Components/Images'
 
 function App() {
+
+  const AiSlice = (state => state.AiSlice);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+<Row style={{margin:'20vh 0'}}>
+      <Col span={12}>
+
+    <Searchimg/>
+      </Col>
+      <Col span={12}>
+      { AiSlice.images.map(ele=>(
+
+        <Images url={ele.url}/>
+      )) 
+      }
+      </Col>
+    </Row>
+    </>
   );
 }
 
